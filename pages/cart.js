@@ -5,8 +5,10 @@ import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import { XCircleIcon } from "@heroicons/react/outline"
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
-export default function CartScreen() {
+
+function CartScreen() {
 
     const { state, dispatch } = useContext(Store);
     const router = useRouter();
@@ -18,6 +20,11 @@ export default function CartScreen() {
         dispatch({ type: "CART_REMOVE_ITEM", payload: item })
     }
 
+    const updateCartHandler = (item, qty) => {
+        const quantity = Number(qty);
+        dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } })
+
+    }
     return (
         <Layout title="Shopping Cart">
             <h1 className='mb-4 text-xl'>Shopping Cart</h1>
@@ -57,7 +64,17 @@ export default function CartScreen() {
                                                     </a>
                                                 </Link>
                                             </td>
-                                            <td className='p-5 text-right'>{item.quantity}</td>
+                                            <td className='p-5 text-right'>
+                                                <select value={item.quantity} onChange={(e) => updateCartHandler(item, e.target.value)}>
+                                                    {
+                                                        [...Array(item.countInStock).keys()].map((x) => (
+                                                            <option key={x + 1} value={x + 1}>
+                                                                {x + 1}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </td>
                                             <td className='p-5 text-right'>{item.price}</td>
                                             <td className='p-5 text-center'>
                                                 <button onClick={() => removeItemFromCart(item)}>
@@ -81,7 +98,7 @@ export default function CartScreen() {
                                     </div>
                                 </li>
                                 <li>
-                                    <button onClick={() => router.push("/shipping")} className='primary-button w-full'>Order</button>
+                                    <button onClick={() => router.push("login?redirect=/shipping")} className='primary-button w-full'>Order</button>
                                 </li>
                             </ul>
                         </div>
@@ -92,3 +109,6 @@ export default function CartScreen() {
         </Layout>
     )
 }
+
+
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false })
