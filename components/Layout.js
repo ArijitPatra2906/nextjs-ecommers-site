@@ -33,7 +33,6 @@ export default function Layout({ title, children }) {
                                     {cartItemsCount > 0 && (
                                         <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
                                             {cartItemsCount}
-                                            {/* 2 */}
                                         </span>
                                     )}
                                 </a>

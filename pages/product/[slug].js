@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 import Layout from '../../components/Layout'
 import data from '../../utils/data';
@@ -8,6 +8,7 @@ import { Store } from '../../utils/Store';
 
 export default function ProductScreen() {
     const { state, dispatch } = useContext(Store);
+    const router = useRouter();
     const { query } = useRouter();
     const { slug } = query;
     const product = data.products.find(x => x.slug === slug)
@@ -25,6 +26,7 @@ export default function ProductScreen() {
         }
 
         dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+        router.push("/cart")
     }
 
     return (
@@ -62,7 +64,7 @@ export default function ProductScreen() {
                     <div className="card p-5">
                         <div className='mb-2 flex justify-between'>
                             <div>Price</div>
-                            <div>${product.price}</div>
+                            <div>₹{product.price}</div>
                         </div>
                         <div className='mb-2 flex justify-between'>
                             <div>Status</div>
