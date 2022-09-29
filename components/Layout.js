@@ -30,12 +30,12 @@ export default function Layout({ title, children }) {
                         <div>
                             <Link href="/cart">
                                 <a className='p-2'>Cart
-                                    {/* {cartItemsCount > 0 && ( */}
-                                    <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
-                                        {/* {cartItemsCount}  */}
-                                        2
-                                    </span>
-                                    {/* )} */}
+                                    {cartItemsCount > 0 && (
+                                        <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
+                                            {cartItemsCount}
+                                            {/* 2 */}
+                                        </span>
+                                    )}
                                 </a>
                             </Link>
                             <Link href="/login"><a className='p-2'>Login</a></Link>
