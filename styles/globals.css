@@ -30,12 +30,20 @@ a {
   }
 }
 
+a {
+  @apply text-blue-600
+}
+
 .card {
   @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {
   @apply mt-2 rounded bg-amber-300 py-2 px-4 shadow outline-none;
+}
+
+.default-button {
+  @apply mt-2 rounded py-2 px-4 text-black shadow outline-none;
 }
 
 input,
