@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, cartHandler }) {
     return (
         <div className='card'>
             <Link href={`/product/${product.slug}`}>
@@ -19,7 +19,7 @@ export default function ProductItem({ product }) {
                 </Link>
                 <p className='mb-2'>{product.brand}</p>
                 <p>₹{product.price}</p>
-                <button className='primary-button hover:bg-amber-400 active:bg-amber-500'>Add to cart</button>
+                <button className='primary-button hover:bg-amber-400 active:bg-amber-500' onClick={() => cartHandler(product)}>Add to cart</button>
             </div>
         </div>
     )
