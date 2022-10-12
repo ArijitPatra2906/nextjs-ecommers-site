@@ -236,7 +236,7 @@ function OrderScreen() {
                                                     onApprove={onApprove}
                                                     onError={onError}
                                                 ></PayPalButtons>
-                                                <div className='w-full ml-2 mb-3'>
+                                                <div className='w-full ml-3 mb-3'>
                                                     <GooglePayButton
                                                         environment="TEST"
                                                         paymentRequest={{
