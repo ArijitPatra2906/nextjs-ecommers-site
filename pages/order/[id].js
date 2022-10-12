@@ -7,7 +7,7 @@ import React, { useEffect, useReducer } from 'react'
 import Layout from '../../components/Layout';
 import { getError } from '../../utils/error';
 import GooglePayButton from '@google-pay/button-react';
-
+import { toast } from "react-toastify"
 function reducer(state, action) {
     switch (action.type) {
         case "FETCH_REQUEST":
