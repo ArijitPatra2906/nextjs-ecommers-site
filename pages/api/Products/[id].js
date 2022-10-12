@@ -9,4 +9,4 @@ const handler = async (req, res) => {
     res.send(product)
 }
 
-export default handler
+export default handler;
