@@ -77,6 +77,16 @@ export default function Layout({ title, children }) {
                                         <Menu.Item>
                                             <DropdownLink className="dropdown-link flex p-2 hover:bg-grey-200" href="/order-history">Order History</DropdownLink>
                                         </Menu.Item>
+                                        {session.user.isAdmin && (
+                                            <Menu.Item>
+                                                <DropdownLink
+                                                    className="dropdown-link flex p-2 hover:bg-grey-200"
+                                                    href="/admin/dashboard"
+                                                >
+                                                    Admin Dashboard
+                                                </DropdownLink>
+                                            </Menu.Item>
+                                        )}
                                         <Menu.Item>
                                             <a href="#" className='dropdown-link flex p-2 hover:bg-grey-200' onClick={logoutHandler}>
                                                 Logout
@@ -98,6 +108,7 @@ export default function Layout({ title, children }) {
                 </main>
                 <footer className='flex justify-center items-center h-10 shadow-inner z-index-9999'>
                     <p>Copyright © 2022</p>
+                    <p>Designed by - Arijit Patra</p>
                 </footer>
             </div >
         </>
